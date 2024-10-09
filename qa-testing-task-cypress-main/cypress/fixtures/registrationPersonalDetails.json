@@ -1,0 +1,18 @@
+{   
+    "url": "https://automationteststore.com/index.php?rt=account/create",
+    "firstName": "test",
+    "lastName": "user",
+    "email": "test123@yahoo.com",
+    "tel":"+21540456236", 
+    "fax":"+34243423", 
+    "company":"comp name", 
+    "adress":"test address 123", 
+    "city":"Katowice", 
+    "state":"Slaskie", 
+    "zipcode":"2021",
+    "country":"Poland", 
+    "loginName":"testUser8", 
+    "password":"1234", 
+    "passwordConfirm":"1234",
+    "succesMessageHeading":"Your Account Has Been Created!"  
+}

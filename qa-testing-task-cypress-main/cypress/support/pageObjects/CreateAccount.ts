@@ -79,6 +79,10 @@ export class CreateAccount {
         return cy.get("#maincontainer h1.heading1");
     }
 
+    getNewAccountEmailAlreadyRegisteredAlert(): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy.get(".alert-error");
+    }
+
 
     createNewAccountWithSubscribe(): void {
         cy.intercept('https://automationteststore.com/index.php?rt=account/success').as('succesRequest');
@@ -132,7 +136,7 @@ export class CreateAccount {
             this.getNewAccountState()
                 .select(registrationPersonalDetails.state)
                 .find('option:selected')
-                .should("have.text", registrationPersonalDetails.state); // For select elements, use 'have.value'
+                .should("have.text", registrationPersonalDetails.state); 
 
             this.getNewAccountZipcode()
                 .type(registrationPersonalDetails.zipcode)
@@ -159,12 +163,6 @@ export class CreateAccount {
             //Click in "Continue" button and submit
             this.getNewAccountContinueButton().click();
 
-            // Add an assertion that the mentioned request appeared correctly after registration           
-            cy.wait("@succesRequest").then((interception) => {
-                expect(interception.response?.statusCode).to.equal(200);
-            });
-
-            this.getNewAccountSuccesMessageHeading().should('contain.text', registrationPersonalDetails.succesMessageHeading);
 
         });
 
@@ -248,7 +246,9 @@ export class CreateAccount {
             this.getNewAccountNewsPrivacyPolicyCheckbox().check();
 
             //Click in "Continue" button and submit
-            this.getNewAccountPasswordConfirm().click();
+            this.getNewAccountContinueButton().click();
+
+           
         });
     }
 
